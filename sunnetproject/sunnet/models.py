@@ -13,8 +13,8 @@ class GELEN_TAKILAR(models.Model):
     SOYAD = models.TextField(db_column='Soyad', blank=True, null=True)  # Field name made lowercase.
     ACIKLAMA = models.TextField(blank=True, null=True)
     MIKTAR = models.IntegerField(blank=True, null=True)
-    TAKI_TUR_ID = models.ForeignKey('TAKI_TURU', models.SET_NULL, blank=True, null=True)
-    KISI = models.ForeignKey('KISILER', models.DO_NOTHING)
+    TAKI_TUR_ID = models.ForeignKey('TAKI_TURU', models.SET_NULL, blank=True, null=True,db_column = 'TAKI_TUR_ID')
+    KISI_ID = models.ForeignKey('KISILER', models.SET_NULL, blank=True, null=True,db_column = 'KISI_ID')
 
 class KISILER(models.Model):
     ID = models.AutoField(primary_key=True)
