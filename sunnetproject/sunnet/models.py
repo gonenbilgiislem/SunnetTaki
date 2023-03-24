@@ -5,7 +5,11 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+
+from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
+
+
 
 class GELEN_TAKILAR(models.Model):
     # ID = models.AutoField(primary_key=True)
@@ -14,11 +18,12 @@ class GELEN_TAKILAR(models.Model):
     ACIKLAMA = models.TextField(blank=True, null=True)
     MIKTAR = models.IntegerField(blank=True, null=True)
     TAKI_TUR = models.ForeignKey('TAKI_TURU', models.SET_NULL, blank=True, null=True)
-    KISI = models.ForeignKey('KISILER', models.RESTRICT, blank=True, null=True)
+    KISI = models.ForeignKey('KISILER', models.PROTECT, blank=True, null=True)
     ekleme_tarihi = models.DateTimeField(auto_now_add=True)
     guncelleme_tarihi = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.AD
+
     class Meta:
         verbose_name = "Gelen Ganimet"
         verbose_name_plural = "Gelen Ganimetler"
