@@ -1,13 +1,25 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
-from .models import GELEN_TAKILAR, KISILER, TAKI_TURU
+from .models import GELEN_TAKILAR
+
+from django.shortcuts import render
+from .models import GELEN_TAKILAR
+
+
 # Create your views here.
 def index(request):
-    ganimet = GELEN_TAKILAR.objects.all()
-    return render(request, 'sunnet/index.html',{
-        "ganimet": ganimet
-    })
+    context = {
+        "ganimet": GELEN_TAKILAR.objects.all(),
+        "head": {
+            'id': "#",
+            'AD': 'Adı',
+            'SOYAD': 'Soyadı',
+            'ACIKLAMA': 'Açıklama',
+            'MIKTAR': 'Miktar',
+            'TAKI_TUR': 'Ganimet Türü',
+            'KISI': 'Kime Gelen Ganimet'
+        }
+    }
+    return render(request, 'sunnet/index.html', {'icerik': context})
 
 
 def about(request):

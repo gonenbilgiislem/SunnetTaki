@@ -8,7 +8,7 @@
 
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
-
+from django.core.exceptions import ValidationError
 
 
 class GELEN_TAKILAR(models.Model):
@@ -16,17 +16,25 @@ class GELEN_TAKILAR(models.Model):
     AD = models.TextField(db_column='Ad')  # Field name made lowercase.
     SOYAD = models.TextField(db_column='Soyad', blank=True, null=True)  # Field name made lowercase.
     ACIKLAMA = models.TextField(blank=True, null=True)
-    MIKTAR = models.IntegerField(blank=True, null=True)
-    TAKI_TUR = models.ForeignKey('TAKI_TURU', models.SET_NULL, blank=True, null=True)
+    MIKTAR = models.DecimalField(max_digits=19,decimal_places=2,blank=True, null=True)
+    TAKI_TUR = models.ForeignKey('TAKI_TURU', models.PROTECT, blank=True, null=True)
     KISI = models.ForeignKey('KISILER', models.PROTECT, blank=True, null=True)
-    ekleme_tarihi = models.DateTimeField(auto_now_add=True)
-    guncelleme_tarihi = models.DateTimeField(auto_now=True)
+    ekleme_tarihi = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    guncelleme_tarihi = models.DateTimeField(auto_now=True , blank=True, null=True)
+
+
+    def clean(self):
+        if (self.MIKTAR) < 0:
+            raise ValidationError(
+                {'MIKTAR': "Lütfen 0'dan büyük bir değer giriniz."})
+
     def __str__(self):
         return self.AD
 
     class Meta:
         verbose_name = "Gelen Ganimet"
         verbose_name_plural = "Gelen Ganimetler"
+
 
 class KISILER(models.Model):
     class Meta:
