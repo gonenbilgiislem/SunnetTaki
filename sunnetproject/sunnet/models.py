@@ -6,10 +6,9 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 
-from django.contrib.auth.models import AbstractBaseUser
+# from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from django.core.exceptions import ValidationError
-
 
 class GELEN_TAKILAR(models.Model):
     # ID = models.AutoField(primary_key=True)

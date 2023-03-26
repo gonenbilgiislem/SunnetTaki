@@ -1,8 +1,5 @@
 from django.shortcuts import render
-from .models import GELEN_TAKILAR
-
-from django.shortcuts import render
-from .models import GELEN_TAKILAR
+from .models import GELEN_TAKILAR, KISILER, TAKI_TURU
 
 
 # Create your views here.
@@ -44,3 +41,13 @@ def register(request):
 
 def logout(request):
     return None
+
+from django.views.generic import ListView
+from django_tables2 import SingleTableView, LazyPaginator
+from .tables import GELEN_TAKILAR_Table
+
+class GELEN_TAKI_View(SingleTableView):
+    model = GELEN_TAKILAR
+    table_class = GELEN_TAKILAR_Table
+    template_name = 'sunnet/people.html'
+    paginate_by = 10

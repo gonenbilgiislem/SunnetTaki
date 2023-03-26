@@ -1,0 +1,18 @@
+{# sunnetproject/templates/sunnet/people.html #}
+{% load static %}
+{% load render_table from django_tables2 %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" />
+<link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js" />
+
+
+<!doctype html>
+<html>
+    <head>
+
+        <title>List of persons</title>
+    </head>
+    <body>
+        {% render_table table %}
+    </body>
+</html>

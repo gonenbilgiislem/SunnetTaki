@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
+    "django_tables2",
     'sunnet.apps.SunnetConfig',
     'django.contrib.admin',
     'django.contrib.auth',

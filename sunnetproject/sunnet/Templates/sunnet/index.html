@@ -21,24 +21,26 @@
                     <thead>
                     <tr>
                         <th scope="col">{{ icerik.head.id }}</th>
-                        <th scope="col">{{ icerik.head.AD }}</th>
-                        <th scope="col">{{ icerik.head.SOYAD }}</th>
+                        <th scope="col"> AD-SOYAD </th>
+{#                        <th scope="col">{{ icerik.head.AD }}</th>#}
+{#                        <th scope="col">{{ icerik.head.SOYAD }}</th>#}
                         <th scope="col">{{ icerik.head.ACIKLAMA }}</th>
                         <th scope="col">{{ icerik.head.MIKTAR }}</th>
-                        <th scope="col">{{ icerik.head.KISI }}</th>
                         <th scope="col">{{ icerik.head.TAKI_TUR }}</th>
+                        <th scope="col">{{ icerik.head.KISI }}</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for taki in icerik.ganimet %}
                         <tr>
                             <th scope="row">{{ taki.id }}</th>
-                            <th scope="row">{{ taki.AD }}</th>
-                            <th scope="row">{{ taki.SOYAD }}</th>
+{#                            <th scope="row">{{ taki.AD }}</th>#}
+{#                            <th scope="row">{{ taki.SOYAD }}</th>#}
+                            <th scope="row">{{ taki.AD }} {{ taki.SOYAD|upper }}</th>
                             <th scope="row">{{ taki.ACIKLAMA }}</th>
-                            <th scope="row">{{ taki.MIKTAR }}</th>
-                            <th scope="row">{{ taki.KISI }}</th>
+                            <th scope="row">{{ taki.MIKTAR|floatformat:-2 }}</th>
                             <th scope="row">{{ taki.TAKI_TUR }}</th>
+                            <th scope="row">{{ taki.KISI }}</th>
                         </tr>
                     {% endfor %}
                     </tbody>
