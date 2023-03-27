@@ -3,6 +3,10 @@ from .models import GELEN_TAKILAR, KISILER, TAKI_TURU
 
 
 # Create your views here.
+def home(request):
+    return render(request, 'sunnet/home.html')
+
+
 def index(request):
     context = {
         "ganimet": GELEN_TAKILAR.objects.all(),
